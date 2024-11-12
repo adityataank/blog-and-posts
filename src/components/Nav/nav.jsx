@@ -1,6 +1,8 @@
-import { House, Bookmark, CircleUserRound } from "lucide-react";
 import { Children } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { House, Bookmark, CircleUserRound } from "lucide-react";
+
+import { cn } from "../../utils/helpers";
 
 const NavData = [
   {
@@ -9,18 +11,27 @@ const NavData = [
   },
   {
     icon: <Bookmark />,
-    route: "/",
+    route: "",
   },
   {
     icon: <CircleUserRound />,
-    route: "/",
+    route: "",
   },
 ];
 
 function Nav() {
+  const { pathname } = useLocation();
+
   const NavLink = ({ item }) => {
-    return <Link className="p-3 rounded-full">{item.icon}</Link>;
+    const { icon, route } = item;
+    const isActive = route === pathname;
+    return (
+      <Link to={route} className={cn("p-3 rounded-full", isActive && "bg-zinc-200")}>
+        {icon}
+      </Link>
+    );
   };
+
   return (
     <div className="fixed bottom-0 h-[71px] w-full shadow-[0px_-2px_8px_0px_#0000001A] flex items-center justify-around z-10 max-w-screen-md">
       {Children.toArray(

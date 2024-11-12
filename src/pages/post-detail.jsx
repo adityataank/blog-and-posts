@@ -1,5 +1,3 @@
-// import { useParams } from "react-router-dom";
-import { Bookmark } from "lucide-react";
 import PostTag from "../components/Posts/PostCard/post-tag";
 import Views from "../components/Posts/PostCard/views";
 import Title from "../components/Posts/PostCard/title";
@@ -26,7 +24,7 @@ function PostDetail() {
     <div className="py-3 px-4">
       <div className="flex items-center justify-between mb-6">
         <Back />
-        <Bookmark className="cursor-pointer" />
+        {/* <Bookmark className="cursor-pointer" /> */}
       </div>
       {title ? (
         <>
